@@ -94,3 +94,11 @@ class Pokemon:
     def printStats(self):
         print(str(self.stats))
     
+def calculateStats(IV, EV, BS, NATURE, level):
+    stats = [0,0,0,0,0,0]
+    nature = natures[NATURE]
+    stats[0] = math.floor((((2 * BS[0]) + IV[0] + (EV[0]/4)) * level)/100 + level + 10)
+    for i in range(1,6):
+        stats[i] = math.floor(((((2 * BS[i]) + IV[i] + (EV[i]/4)) * level)/100 + 5) * nature[i])
+    return stats
+    
